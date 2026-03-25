@@ -9,4 +9,4 @@ function fatoracao(n) {
   return n * fatoracao(n - 1);
 }
 
-export default { fibonacci, fatoracao };
+module.exports = { fibonacci, fatoracao };
