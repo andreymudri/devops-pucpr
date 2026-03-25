@@ -1,0 +1,23 @@
+{
+  "name": "devops-pucpr",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/andreymudri/devops-pucpr#readme",
+  "bugs": {
+    "url": "https://github.com/andreymudri/devops-pucpr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreymudri/devops-pucpr.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^30.3.0"
+  }
+}
