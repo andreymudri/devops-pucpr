@@ -9,3 +9,4 @@ test("fatoracao(1) === 1", () => expect(fatoracao(1)).toBe(1));
 test("fatoracao(5) === 120", () => expect(fatoracao(5)).toBe(120));
 test("fatoracao(10) === 3628800", () => expect(fatoracao(10)).toBe(3628800));
 test("fatoracao(-1) should throw an error", () => expect(() => fatoracao(-1)).toThrow("Número deve ser positivo"));
+test("INTENCIONALMENTE QUEBRADO para demonstrar alerta", () => expect(fibonacci(2)).toBe(999));
