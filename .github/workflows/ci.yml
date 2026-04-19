@@ -24,3 +24,36 @@ jobs:
 
       - name: Rodar testes
         run: npm test
+
+  notify-failure:
+    name: Alerta em caso de falha
+    runs-on: ubuntu-latest
+    needs: test
+    if: failure()
+    permissions:
+      issues: write
+    steps:
+      - name: Abrir issue com alerta de falha do CI
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const shortSha = context.sha.slice(0, 7);
+            const title = `CI falhou em ${shortSha} (${context.ref})`;
+            const body = [
+              `**Workflow:** ${context.workflow}`,
+              `**Run:** ${runUrl}`,
+              `**Branch:** \`${context.ref}\``,
+              `**Commit:** ${context.sha}`,
+              `**Evento:** ${context.eventName}`,
+              ``,
+              `Alerta automático gerado pelo workflow de CI.`,
+            ].join("\n");
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title,
+              body,
+              labels: ["ci-failure"],
+            });
